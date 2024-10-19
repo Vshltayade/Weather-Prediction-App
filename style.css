@@ -26,16 +26,25 @@ body{
 
 #container{
     margin: 40px 80px;
-    padding: 20px;
-    border-radius: 15px;
-    background-color: #ffffffd4;
     display: flex;
     height: calc(100% - 80px);
 }
 
+
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* sidebar */
+
 #weather-summary{
     flex: 1;
     position: relative;
+    padding: 20px;
+    background-color: rgba(245, 245, 245, 0.8);
+    border-radius: 20px 0 0 20px;
 }
 
 form{
@@ -104,10 +113,113 @@ hr{
 
 #location{
     position: absolute;
-    bottom: 0;
+    bottom: 20px;
 }
+
+
+
+
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* weather - today, week, info */
 
 #weather-details{
     flex: 4;
+    background-color: rgba(245, 245, 245, .95);
+    border-radius: 0 20px 20px 0;
+    padding: 5px 40px 25px 40px;
 }
 
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.header span{
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.header-s{
+    display: flex;
+}
+
+.header-s div:first-child span{
+    color: rgb(2, 164, 228);
+    margin-right: 10px;
+}
+
+.header-s div:last-child span{
+    color: rgb(55, 69, 75);
+    margin-left: 10px;
+}
+
+.header-e{
+    display: flex;
+}
+
+.header-e div{
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    cursor: pointer;
+}
+
+.header-e div:first-child{
+    margin-right: 10px;
+    background-color: black;
+    color: white;
+}
+
+.header-e div:last-child{
+    margin-left: 10px;
+}
+
+
+
+
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* today data */
+
+.hourly-data{
+    padding: 10px 0;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.one-hour{
+    text-align: center;
+    background-color: white;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 0;
+    margin: 10px;
+    border-radius: 20px;
+}
+
+.one-hour img{
+    width: 70px;
+    padding: 10px 0;
+}
+
+.one-hour sup{
+    font-size: 12px;
+    font-weight: 500;
+    position: relative;
+    top: 3px;
+}
