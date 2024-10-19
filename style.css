@@ -1,0 +1,113 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+::selection{
+    color: white;
+    background-color: black;
+}
+
+body{
+    height: 1000px;
+}
+
+#root{
+    background-image: url('https://i.ibb.co/WGry01m/cd.jpg');
+    background-size: cover;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 100%;
+    height: inherit;
+}
+
+#container{
+    margin: 40px 80px;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #ffffffd4;
+    display: flex;
+    height: calc(100% - 80px);
+}
+
+#weather-summary{
+    flex: 1;
+    position: relative;
+}
+
+form{
+    text-align: center;
+}
+
+form input{
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    width: calc(100% - 52px);
+    height: 24px;
+    padding: 16px 6px;
+    font-size: 14px;
+}
+
+form button{
+    background-color: rgb(2, 164, 228);
+    width: 32px;
+    height: 32px;
+    border: none;
+    position: relative;
+    top: 11px;
+    left: -8px;
+    border-radius: 0 3px 3px 0;
+}
+
+#current-weather-icon{
+    text-align: center;
+}
+
+#current-weather-icon img{
+    width: 180px;
+    height: 180px;
+    margin: 30px 0;
+}
+
+#temp-day-time h1{
+    font-size: 80px;
+    font-weight: 400;
+    margin-bottom: -15px;
+}
+
+#temp-day-time sup{
+    font-size: 40px;
+    font-weight: 400;
+}
+
+#temp-day-time p{
+    font-size: 18px;
+}
+
+hr{
+    border: 1px solid white;
+    margin: 20px 0;
+}
+
+#more-weather-data{
+    padding: 20px 40px;
+}
+
+#more-weather-data p{
+    margin: 10px 0;
+    font-size: 15px;
+}
+
+#location{
+    position: absolute;
+    bottom: 0;
+}
+
+#weather-details{
+    flex: 4;
+}
+
