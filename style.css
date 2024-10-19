@@ -10,10 +10,6 @@
     background-color: black;
 }
 
-body{
-    height: 1000px;
-}
-
 #root{
     background-image: url('https://i.ibb.co/WGry01m/cd.jpg');
     background-size: cover;
@@ -200,6 +196,7 @@ hr{
     padding: 10px 0;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+    gap: 15px;
 }
 
 .one-hour{
@@ -208,7 +205,6 @@ hr{
     font-size: 16px;
     font-weight: 600;
     padding: 10px 0;
-    margin: 10px;
     border-radius: 20px;
 }
 
@@ -222,4 +218,120 @@ hr{
     font-weight: 500;
     position: relative;
     top: 3px;
+}
+
+
+
+
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* week data */
+
+.weekly-data{
+    padding: 10px 0;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 15px;
+}
+
+.day{
+    text-align: center;
+    background-color: white;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 0;
+    border-radius: 20px;
+}
+
+.day img{
+    width: 70px;
+    padding: 10px 0;
+}
+
+.day sup{
+    font-size: 12px;
+    font-weight: 500;
+    position: relative;
+    top: 3px;
+}
+
+
+
+
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* today's highlights */
+
+.today-highlights{
+    margin-top: 50px;
+}
+
+.today-highlights h2{
+    margin-bottom: 80px;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.th-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.grid-item{
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+.grid-item p:first-child{
+    color: gray;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.grid-item p:nth-child(2){
+    padding: 30px 0;
+    font-size: 40px;
+    text-align: center;
+}
+
+.grid-item p:last-child{
+    font-size: 15px;
+}
+
+
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* created by */
+
+.created-by{
+    text-align: center;
+    margin-top: 60px;
+}
+
+.created-by h3{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+
+.created-by span{
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 18px;
+    text-decoration: underline;
+    color: rgb(60, 1, 114);
+    font-family: sans-serif;
 }
