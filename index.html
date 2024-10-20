@@ -20,22 +20,26 @@
                         <button></button>
                     </form>
                     <div id="current-weather-icon">
-                        <img src="https://i.ibb.co/rb4rrJL/26.png" alt="">
+                        <img src="" alt="">
                     </div>
                     <div id="temp-day-time">
-                        <h1>43.5<sup>&deg;C</sup></h1>
-                        <p>Saturday, 04:30</p>
+                        <div>
+                            <h1 id="weather-summary-temp"></h1>
+                            <sup>&deg;C</sup>
+                        </div>
+                        <p></p>
                     </div>
                     <hr>
                     <div id="more-weather-data">
-                        <p>Clear</p>
-                        <p>Perc - 0%</p>
+                        <p id="weather-summary-condition"></p>
+                        <p>Perc - <span id="weather-summary-precipitation"></span>%</p>
                     </div>
 
                     <div id="location">
-                        <p>Bengaluru, KA, India</p>
+                        <p></p>
                     </div>
                 </div>
+
                 <div id="weather-details">
                     <div class="header">
                         <div class="header-s">
@@ -56,7 +60,7 @@
                         </div>
                     </div>
                     
-                    <!-- <div class="today">
+                    <div class="today">
                         <div class="hourly-data">
                             <div class="one-hour">
                                 <p>00:00 AM</p>
@@ -179,9 +183,9 @@
                                 <p>22<sup>&deg;C</sup></p>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
                     
-                    <div class="week">
+                    <!-- <div class="week">
                         <div class="weekly-data">
                             <div class="day">
                                 <p>day</p>
@@ -219,7 +223,7 @@
                                 <p>22<sup>&deg;C</sup></p>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="today-highlights">
                         <h2>Today's Highlights</h2>
@@ -265,4 +269,5 @@
         </div>
         <script src="./script.js"></script>
     </body>
+
 </html>

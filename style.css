@@ -11,7 +11,6 @@
 }
 
 #root{
-    background-image: url('https://i.ibb.co/WGry01m/cd.jpg');
     background-size: cover;
     background-attachment: scroll;
     background-repeat: no-repeat;
@@ -78,15 +77,21 @@ form button{
     margin: 30px 0;
 }
 
+#temp-day-time div{
+    display: flex;
+}
+
 #temp-day-time h1{
     font-size: 80px;
     font-weight: 400;
-    margin-bottom: -15px;
 }
 
 #temp-day-time sup{
     font-size: 40px;
     font-weight: 400;
+    position: relative;
+    top: 13px;
+    left: -5px;
 }
 
 #temp-day-time p{
@@ -104,6 +109,10 @@ hr{
 
 #more-weather-data p{
     margin: 10px 0;
+    font-size: 15px;
+}
+
+#weather-summary-precipitation{
     font-size: 15px;
 }
 
@@ -196,7 +205,7 @@ hr{
     padding: 10px 0;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 15px;
+    gap: 16px;
 }
 
 .one-hour{
