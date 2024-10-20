@@ -35,7 +35,7 @@
 /* sidebar */
 
 #weather-summary{
-    flex: 1;
+    flex: 1.2;
     position: relative;
     padding: 20px;
     background-color: rgba(245, 245, 245, 0.8);
@@ -239,6 +239,10 @@ hr{
 ---------------------------------------------------------------------------------------------------------------------------------------*/
 
 /* week data */
+
+.week{
+    display: none;
+}
 
 .weekly-data{
     padding: 10px 0;

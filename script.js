@@ -1,3 +1,26 @@
+const todayBtn = document.querySelector('.header-s div:first-child span');
+const weekBtn = document.querySelector('.header-s div:last-child span');
+const todaySection = document.getElementsByClassName('today')[0];
+const weekSection = document.getElementsByClassName('week')[0];
+
+weekBtn.addEventListener('click', switchToWeekData);
+
+todayBtn.addEventListener('click', switchToTodayData);
+
+function switchToWeekData(){
+    weekBtn.style.color = 'rgb(2, 164, 228)';
+    todayBtn.style.color = 'rgb(55, 69, 75)';
+    todaySection.style.display = 'none';
+    weekSection.style.display = 'block';
+}
+
+function switchToTodayData(){
+    todayBtn.style.color = 'rgb(2, 164, 228)';
+    weekBtn.style.color = 'rgb(55, 69, 75)';
+    todaySection.style.display = 'block';
+    weekSection.style.display = 'none';
+}
+
 const geoLocation = async () => {
     try{
         const resp = await fetch('https://geolocation-db.com/json/');
@@ -15,6 +38,7 @@ const fetchData = async (city) => {
         const body = await resp.json();
         console.log(body);
         weatherSummary(body.currentConditions, body.resolvedAddress);
+        todayHighlight(body.currentConditions);
     }catch(err){
         console.log(err);
     }
@@ -36,16 +60,28 @@ const weatherSummary = (currentConditions, resolvedAddress) => {
     let time = date.toLocaleTimeString().slice(0,-6);
     if(time.length===4) time = 0 + time;
 
-
     temp.innerText = currentConditions.temp;
     location.innerText = resolvedAddress;
     condition.innerText = currentConditions.conditions;
     precipitation.innerText = currentConditions.precip;
     dayTime.innerText = `${day}, ${time}`;
-    
 }
 
-geoLocation();
+// const todayHighlight = currentConditions => {
+//     const uvIndex = document.querySelector('.grid-item:first-child p:nth-child(2)');
+//     const windSpeed = document.querySelector('.grid-item:nth-child(2) p:nth-child(2)');
+//     const sunrise = document.querySelector('.grid-item:nth-child(3) p:nth-child(2)');
+//     const sunset = document.querySelector('.grid-item:nth-child(3) p:nth-child(3)');
+
+//     uvIndex.innerText = currentConditions.uvindex;
+//     windSpeed.innerText = currentConditions.windspeed;
+//     sunrise.innerText = currentConditions.sunrise.slice(0,-3) + ' am';
+//     const str = currentConditions.sunset.slice(0,2) - 12;
+//     sunset.innerText = str + currentConditions.sunset.slice(3,-3)-12 + ' pm';
+    
+// }
+
+// geoLocation();
 
 const imgObj = {
     'partly-cloudy-day' : ['https://i.ibb.co/PZQXH8V/27.png', 'https://i.ibb.co/qNv7NxZ/pc.webp'],
