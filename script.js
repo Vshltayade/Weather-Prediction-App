@@ -1,11 +1,64 @@
 const todayBtn = document.querySelector('.header-s div:first-child span');
 const weekBtn = document.querySelector('.header-s div:last-child span');
+const celsius = document.querySelector('.header-e button:first-child');
+const Fahrenheit = document.querySelector('.header-e button:last-child');
+const sTemp = document.getElementById('weather-summary-temp');
+const sSym = document.getElementById('weather-summary-temp-cf');
+const tempChange = document.getElementsByClassName('tempChange');
+const sym = document.getElementsByClassName('CF');
 const todaySection = document.getElementsByClassName('today')[0];
 const weekSection = document.getElementsByClassName('week')[0];
+
+
+celsius.disabled = true;
+
 
 weekBtn.addEventListener('click', switchToWeekData);
 
 todayBtn.addEventListener('click', switchToTodayData);
+
+celsius.addEventListener('click', fToC);
+
+Fahrenheit.addEventListener('click', cToF);
+
+
+function cToF(){
+    Fahrenheit.disabled = true;
+    celsius.disabled = false;
+    celsius.style.backgroundColor = 'white';
+    celsius.style.color = 'black';
+    Fahrenheit.style.backgroundColor = 'black';
+    Fahrenheit.style.color = 'white';
+    changeTemp(1);
+}
+
+function fToC(){
+    celsius.disabled = true;
+    Fahrenheit.disabled = false;
+    Fahrenheit.style.backgroundColor = 'white';
+    Fahrenheit.style.color = 'black';
+    celsius.style.backgroundColor = 'black';
+    celsius.style.color = 'white';
+    changeTemp(0);
+}
+
+const changeTemp = x => {
+    if(x){
+        sTemp.innerText = (9/5*(sTemp.innerText))+32;
+        sSym.innerHTML = '&deg;F';
+        for(let i=0; i<31; i++){
+            tempChange[i].innerText = (9/5*(tempChange[i].innerText))+32;
+            sym[i].innerHTML = '&deg;F';
+        }
+    }else{
+        sTemp.innerText = Math.round((sTemp.innerText-32)*5/9);
+        sSym.innerHTML = '&deg;C';
+        for(let i=0; i<31; i++){
+            tempChange[i].innerText = Math.round((tempChange[i].innerText-32)*5/9);
+            sym[i].innerHTML = '&deg;C'
+        }
+    }
+}
 
 function switchToWeekData(){
     weekBtn.style.color = 'rgb(2, 164, 228)';
@@ -20,6 +73,7 @@ function switchToTodayData(){
     todaySection.style.display = 'block';
     weekSection.style.display = 'none';
 }
+
 
 const geoLocation = async () => {
     try{
