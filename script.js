@@ -121,19 +121,24 @@ const weatherSummary = (currentConditions, resolvedAddress) => {
     dayTime.innerText = `${day}, ${time}`;
 }
 
-// const todayHighlight = currentConditions => {
-//     const uvIndex = document.querySelector('.grid-item:first-child p:nth-child(2)');
-//     const windSpeed = document.querySelector('.grid-item:nth-child(2) p:nth-child(2)');
-//     const sunrise = document.querySelector('.grid-item:nth-child(3) p:nth-child(2)');
-//     const sunset = document.querySelector('.grid-item:nth-child(3) p:nth-child(3)');
+const todayHighlight = currentConditions => {
+    const uvIndex = document.querySelector('.grid-item:first-child p:nth-child(2)');
+    const windSpeed = document.querySelector('.grid-item:nth-child(2) p:nth-child(2)');
+    const sunrise = document.querySelector('.grid-item:nth-child(3) p:nth-child(2)');
+    const sunset = document.querySelector('.grid-item:nth-child(3) p:nth-child(3)');
+    const humidity = document.querySelector('.grid-item:nth-child(4) p:nth-child(2)');
+    const visibility = document.querySelector('.grid-item:nth-child(5) p:nth-child(2)');
+    const airQuality = document.querySelector('.grid-item:nth-child(6) p:nth-child(2)');
 
-//     uvIndex.innerText = currentConditions.uvindex;
-//     windSpeed.innerText = currentConditions.windspeed;
-//     sunrise.innerText = currentConditions.sunrise.slice(0,-3) + ' am';
-//     const str = currentConditions.sunset.slice(0,2) - 12;
-//     sunset.innerText = str + currentConditions.sunset.slice(3,-3)-12 + ' pm';
-    
-// }
+    uvIndex.innerText = currentConditions.uvindex;
+    windSpeed.innerText = currentConditions.windspeed;
+    sunrise.innerText = currentConditions.sunrise.slice(0,-3) + ' am';
+    const str = '0' + (currentConditions.sunset.slice(0,2) - 12);
+    sunset.innerText = str + currentConditions.sunset.slice(2,-3) + ' pm';
+    humidity.innerText = currentConditions.humidity + '%';
+    visibility.innerText = currentConditions.visibility;
+    airQuality.innerText = '';
+}
 
 // geoLocation();
 
