@@ -166,7 +166,18 @@ const hourlyData = today => {
     }
 }
 
+const weeklyData = days => {
+    const hourWeekData = document.getElementsByClassName('one-hour-day');
+    for(let i=0; i<7; i++){
+        const date = new Date(days[i].datetime);
+        const day = date.toLocaleString('en-us', {weekday:'long'});
+        hourWeekData[i+24].children.item(0).innerText = day;
+        
+        hourWeekData[i+24].children.item(1).setAttribute('src', `${imgObj[days[i]['icon']][0]}`)
 
+        hourWeekData[i+24].children.item(2).children.item(0).innerText = tempArr[i+24];
+    }
+}
 
 // geoLocation();
 
@@ -10848,4 +10859,4 @@ const obj = {
 
 fetchTemps(obj.days);
 hourlyData(obj.days[0]);
-// weeklyData(obj.days);
+weeklyData(obj.days);
