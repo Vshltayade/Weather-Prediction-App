@@ -81,8 +81,10 @@ const geoLocation = async () => {
     try{
         const resp = await fetch('https://geolocation-db.com/json/');
         const body = await resp.json();
-        body.city ?? (body.city = 'Bengaluru')
-        fetchData(body.city);
+        body.city ?? (body.city = 'Bengaluru');
+        body.state ?? (body.state = 'Karnataka');
+        body.country_name ?? (body.country_name = 'India');
+        fetchData(`${body.city},${body.state},${body.country_name}`);
     }catch(err){
         console.log(err);
     }
@@ -90,12 +92,16 @@ const geoLocation = async () => {
 
 const fetchData = async (city) => {
     try{
+      console.log(city);
+      
         const resp = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=metric&key=EJ6UBL2JEQGYB3AA4ENASN62J&contentType=json`);
         const body = await resp.json();
         console.log(body);
+        fetchTemps(body.days);
         weatherSummary(body.currentConditions, body.resolvedAddress);
         todayHighlight(body.currentConditions);
-        hourWeekData(obj.days);
+        hourlyData(body.days[0]);
+        weeklyData(body.days);
     }catch(err){
         console.log(err);
     }
@@ -117,11 +123,11 @@ const weatherSummary = (currentConditions, resolvedAddress) => {
     let time = date.toLocaleTimeString().slice(0,-6);
     if(time.length===4) time = 0 + time;
 
-    sideTemp = currentConditions.time;
+    sideTemp = currentConditions.temp;
     temp.innerText = sideTemp;
     location.innerText = resolvedAddress;
     condition.innerText = currentConditions.conditions;
-    precipitation.innerText = currentConditions.precip;
+    precipitation.innerText = currentConditions.precip ?? '0';
     dayTime.innerText = `${day}, ${time}`;
 }
 
@@ -179,7 +185,7 @@ const weeklyData = days => {
     }
 }
 
-// geoLocation();
+geoLocation();
 
 const imgObj = {
     'partly-cloudy-day' : ['https://i.ibb.co/PZQXH8V/27.png', 'https://i.ibb.co/qNv7NxZ/pc.webp'],
@@ -10857,6 +10863,5 @@ const obj = {
     }
   }
 
-fetchTemps(obj.days);
-hourlyData(obj.days[0]);
-weeklyData(obj.days);
+
+
