@@ -9,11 +9,13 @@ const tempChange = document.getElementsByClassName('tempChange');
 const sym = document.getElementsByClassName('CF');
 const todaySection = document.getElementsByClassName('today')[0];
 const weekSection = document.getElementsByClassName('week')[0];
+const inputLocation = document.getElementsByTagName('input')[0];
+const searchBtn = document.getElementById('search');
 
 
 // define some values
 celsius.disabled = true;
-const tempArr = [];
+let tempArr = [];
 let sideTemp;
 
 
@@ -26,6 +28,35 @@ celsius.addEventListener('click', fToC);
 
 Fahrenheit.addEventListener('click', cToF);
 
+inputLocation.addEventListener('focus', inputFocus);
+inputLocation.addEventListener('blur', blurFocus);
+
+searchBtn.addEventListener('click', searchLocation);
+document.getElementsByTagName('form')[0].addEventListener('submit', (e) => {
+    e.preventDefault();
+})
+
+// search location
+function searchLocation(){
+    inputLocation.value = inputLocation.value.trim();
+    if(inputLocation.value.length === 0) alert('please enter a location');
+    else {
+        fetchData(inputLocation.value);
+        inputLocation.value = '';
+    };
+}
+
+// input focus
+function inputFocus(){
+    inputLocation.style.border = '1px solid rgb(2, 164, 228)';
+    searchBtn.style.top = '1px';
+}
+
+// blur focus
+function blurFocus(){
+    inputLocation.style.border = 'none';
+    searchBtn.style.top = '0';
+}
 
 // function to convert and change temperature
 function cToF(){
@@ -99,19 +130,23 @@ const geoLocation = async () => {
 // fetch location weather data
 const fetchData = async (city) => {
     try{
-      console.log(city);
-      
         const resp = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=metric&key=EJ6UBL2JEQGYB3AA4ENASN62J&contentType=json`);
         const body = await resp.json();
         console.log(body);
-        fetchTemps(body.days);
-        weatherSummary(body.currentConditions, body.resolvedAddress);
-        todayHighlight(body.currentConditions);
-        hourlyData(body.days[0]);
-        weeklyData(body.days);
+        tempArr = [];
+        functions(body);
     }catch(err){
         console.log(err);
+        alert('location not found...')
     }
+}
+
+function functions(body){
+    fetchTemps(body.days);
+    weatherSummary(body.currentConditions, body.resolvedAddress);
+    todayHighlight(body.currentConditions);
+    hourlyData(body.days[0]);
+    weeklyData(body.days);
 }
 
 // set weather summary
@@ -164,7 +199,7 @@ const todayHighlight = currentConditions => {
     visibility.innerText = currentConditions.visibility;
     visibilityStatus.innerText = visibilityStatusf(visibility.innerText);
     airQuality.innerText = currentConditions.winddir;
-    airQualityStatus.innerText = airQualityStatusf(airQuality.innerText/100);
+    airQualityStatus.innerHTML = airQualityStatusf(airQuality.innerText/100);
 }
 
 // save temps in arr
@@ -175,6 +210,8 @@ const fetchTemps = days => {
     for(let i=0;i<7;i++){
         tempArr.push(days[i].temp);
     }
+    console.log(tempArr);
+    
 }
 
 // set hourly data
@@ -262,12 +299,12 @@ const visibilityStatusf = val => {
 // get visibility status
 const airQualityStatusf = val => {
   let status;
-  val<=0.03 ? status='Good' : null;
-  val>=0.04 && val<=0.16 ? status='Moderate' : null;
-  val>=0.17 && val<=0.35 ? status='Unhealthy for Sensitive Groups' : null;
-  val>=0.36 && val<=1.13 ? status='Unhealthy' : null;
-  val>=1.14 && val<=2.16 ? status='Very Unhealthy' : null;
-  val>=2.17 ? status='Hazardous' : null;
+  val<=0.03 ? status='Good &#x1F44C' : null;
+  val>=0.04 && val<=0.16 ? status='Moderate &#x1F610' : null;
+  val>=0.17 && val<=0.35 ? status='Unhealthy for Sensitive Groups &#x1F637' : null;
+  val>=0.36 && val<=1.13 ? status='Unhealthy &#x1F637' : null;
+  val>=1.14 && val<=2.16 ? status='Very Unhealthy &#x1F628' : null;
+  val>=2.17 ? status='Hazardous &#x1F631' : null;
   return status;
 }
 
@@ -279,6 +316,7 @@ const imgObj = {
     'rain' : ['https://i.ibb.co/kBd2NTS/39.png', 'https://i.ibb.co/h2p6Yhd/rain.webp'],
     'clear-day' : ['https://i.ibb.co/rb4rrJL/26.png', 'https://i.ibb.co/WGry01m/cd.jpg'],
     'clear-night' : ['https://i.ibb.co/1nxNGHL/10.png', 'https://i.ibb.co/kqtZ1Gx/cn.jpg'],
+    'cloudy' : ['https://i.ibb.co/PZQXH8V/27.png', 'https://i.ibb.co/qNv7NxZ/pc.webp'],
 }
 
 

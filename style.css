@@ -35,7 +35,7 @@
 /* sidebar */
 
 #weather-summary{
-    flex: 1.2;
+    flex: 1.15;
     position: relative;
     padding: 20px;
     background-color: rgba(245, 245, 245, 0.8);
@@ -43,28 +43,28 @@
 }
 
 form{
-    text-align: center;
+    position: relative;
 }
 
 form input{
     outline: none;
     border: none;
-    border-radius: 3px;
-    width: calc(100% - 52px);
-    height: 24px;
-    padding: 16px 6px;
+    border-radius: 5px;
+    width: 100%;
+    padding: 9px;
     font-size: 14px;
+    color: rgb(70, 70, 70);
 }
 
 form button{
     background-color: rgb(2, 164, 228);
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 39.5px;
     border: none;
-    position: relative;
-    top: 11px;
-    left: -8px;
-    border-radius: 0 3px 3px 0;
+    position: absolute;
+    left: calc(100% - 40px);
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
 }
 
 #current-weather-icon{
@@ -72,8 +72,7 @@ form button{
 }
 
 #current-weather-icon img{
-    width: 180px;
-    height: 180px;
+    width: 200px;
     margin: 30px 0;
 }
 
@@ -199,10 +198,10 @@ hr{
 }
 
 .hourly-weekly-data{
-    padding: 10px 0;
+    padding: 15px 0;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 16px;
+    gap: 18px;
 }
 
 .one-hour-day{
@@ -245,6 +244,7 @@ hr{
 
 .today-highlights{
     margin-top: 50px;
+    margin-right: 50px;
 }
 
 .today-highlights h2{
@@ -267,13 +267,13 @@ hr{
 
 .grid-item p:first-child{
     color: gray;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 500;
 }
 
 .grid-item p:nth-child(2){
-    padding: 30px 0;
-    font-size: 40px;
+    padding: 25px 0;
+    font-size: 36px;
     text-align: center;
 }
 
