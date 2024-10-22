@@ -11,6 +11,7 @@ const todaySection = document.getElementsByClassName('today')[0];
 const weekSection = document.getElementsByClassName('week')[0];
 const inputLocation = document.getElementsByTagName('input')[0];
 const searchBtn = document.getElementById('search');
+const loader = document.getElementById('loader');
 
 
 // define some values
@@ -20,6 +21,9 @@ let sideTemp;
 
 
 // event listeners
+
+window.onload = loading();
+
 weekBtn.addEventListener('click', switchToWeekData);
 
 todayBtn.addEventListener('click', switchToTodayData);
@@ -35,6 +39,13 @@ searchBtn.addEventListener('click', searchLocation);
 document.getElementsByTagName('form')[0].addEventListener('submit', (e) => {
     e.preventDefault();
 })
+
+// loading
+function loading(){
+    setTimeout(()=>{
+        loader.style.display = 'none';
+    },2000);
+}
 
 // search location
 function searchLocation(){
@@ -161,7 +172,7 @@ const weatherSummary = (currentConditions, resolvedAddress) => {
 
     icon.setAttribute('src', `${imgObj[currentConditions.icon][0]}`);
     bg.style.backgroundImage = `url(${imgObj[currentConditions.icon][1]})`
-    const date = new Date(currentConditions.datetimeEpoch*1000);
+    const date = new Date();
     const day = date.toLocaleString('en-us', {weekday:'long'});
     let time = date.toLocaleTimeString().slice(0,-6);
     if(time.length===4) time = 0 + time;
@@ -209,9 +220,7 @@ const fetchTemps = days => {
     }
     for(let i=0;i<7;i++){
         tempArr.push(days[i].temp);
-    }
-    console.log(tempArr);
-    
+    }    
 }
 
 // set hourly data
@@ -308,15 +317,17 @@ const airQualityStatusf = val => {
   return status;
 }
 
+// call geolocation -default location
 geoLocation();
 
+// images and icons
 const imgObj = {
     'partly-cloudy-day' : ['https://i.ibb.co/PZQXH8V/27.png', 'https://i.ibb.co/qNv7NxZ/pc.webp'],
     'partly-cloudy-night' : ['https://i.ibb.co/Kzkk59k/15.png', 'https://i.ibb.co/RDfPqXz/pcn.jpg'],
     'rain' : ['https://i.ibb.co/kBd2NTS/39.png', 'https://i.ibb.co/h2p6Yhd/rain.webp'],
     'clear-day' : ['https://i.ibb.co/rb4rrJL/26.png', 'https://i.ibb.co/WGry01m/cd.jpg'],
     'clear-night' : ['https://i.ibb.co/1nxNGHL/10.png', 'https://i.ibb.co/kqtZ1Gx/cn.jpg'],
-    'cloudy' : ['https://i.ibb.co/PZQXH8V/27.png', 'https://i.ibb.co/qNv7NxZ/pc.webp'],
+    'cloudy' : ['https://i.ibb.co/Kzkk59k/15.png', 'https://i.ibb.co/RDfPqXz/pcn.jpg'],
 }
 
 
