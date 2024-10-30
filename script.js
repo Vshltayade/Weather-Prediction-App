@@ -52,6 +52,8 @@ function searchLocation(){
     inputLocation.value = inputLocation.value.trim();
     if(inputLocation.value.length === 0) alert('please enter a location');
     else {
+        fToC();
+        switchToTodayData();
         fetchData(inputLocation.value);
         inputLocation.value = '';
     };
