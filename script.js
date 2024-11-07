@@ -252,7 +252,9 @@ const weeklyData = days => {
         const day = date.toLocaleString('en-us', {weekday:'long'});
         hourWeekData[i+24].children.item(0).innerText = day;
         
-        hourWeekData[i+24].children.item(1).setAttribute('src', `${imgObj[days[i]['icon']][0]}`)
+        let icon = days[i]['icon'];
+        (icon === 'cloudy') ? (icon = 'cloudyd') : null;
+        hourWeekData[i+24].children.item(1).setAttribute('src', `${imgObj[icon][0]}`);
 
         hourWeekData[i+24].children.item(2).children.item(0).innerText = tempArr[i+24];
     }
